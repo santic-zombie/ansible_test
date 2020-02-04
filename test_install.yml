@@ -1,0 +1,4 @@
+- name: "Test install NGINX"
+  hosts: test
+  roles:
+   - nginx

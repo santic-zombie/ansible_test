@@ -1,0 +1,4 @@
+- name: "Test ssh keys deploy"
+  hosts: test
+  roles:
+   - ssh_keys

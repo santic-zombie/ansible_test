@@ -1,0 +1,4 @@
+- name: "Set up authorized_key for Me"
+  authorized_key: user=santic key="{{ item }}"
+  with_file:
+  - keys/centos.pub
