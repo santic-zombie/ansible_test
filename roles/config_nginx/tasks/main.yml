@@ -42,8 +42,7 @@
     daemon_reload: yes
 
 - name: "Open TCP port 80"
-  iptables:
-    chain: INPUT
-    destination_port: 80
-    jump: ACCEPT
-    protocol: tcp
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
