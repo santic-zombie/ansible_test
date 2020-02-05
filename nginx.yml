@@ -1,13 +1,12 @@
-- name: "Ping test host"
+- name: "Setup NGINX"
   hosts: test
-  gather_facts: false
   become:
-    false
+    true
   become_method:
     su
   become_user:
     root
   remote_user:
     santic
-  tasks:
-    - ping:
+  roles:
+   - config_nginx

@@ -1,0 +1,6 @@
+listen_http: 80
+nginx_user: nginx
+worker_processes: 1
+worker_connections: 512
+root_dir: /srv/www
+log_dir: /var/log/nginx

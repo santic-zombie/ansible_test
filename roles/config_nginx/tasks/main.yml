@@ -1,0 +1,49 @@
+- name: "Replace nginx.conf"
+  template:
+    src=templates/nginx.j2
+    dest=/etc/nginx/nginx.conf
+
+- name: "Create Root Dir"
+  file:
+    path: "{{ root_dir }}/{{ ansible_hostname }}"
+    state: directory
+    mode: '0755'
+
+# Ansible version 2.8 supports recursive copy
+
+#- name: "Copy defaults files for Root Dir"
+#  copy:
+#    src: /usr/share/nginx/html
+#    remote_src: yes
+#    dest: "{{ root_dir }}/{{ ansible_hostname }}"
+#    owner: "{{ nginx_user }}"
+#    group: "{{ nginx_user }}"
+#    mode: u=rw,g=r,o=r
+
+- name: "Copy defaults files for Root Dir"
+  copy:
+    src: "{{ role_path }}/files/index.html"
+    dest: "{{ root_dir }}/{{ ansible_hostname }}/index.html"
+
+- name: "Set owner Root Dir"
+  file:
+    path: "{{ root_dir }}/{{ ansible_hostname }}"
+    state: directory
+    recurse: yes
+    mode: '0755'
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_user }}"
+
+- name: "Service NGINX restart and enable on boot"
+  systemd:
+    name: "{{ nginx_user }}"
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
+- name: "Open TCP port 80"
+  iptables:
+    chain: INPUT
+    destination_port: 80
+    jump: ACCEPT
+    protocol: tcp
