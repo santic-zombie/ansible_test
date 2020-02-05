@@ -1,3 +1,12 @@
+- name: "Add epel-release repo"
+  yum:
+     name: epel-release
+     state: present
+- name: "Install Nginx"
+  yum:
+     name: nginx
+     state: present 
+
 - name: "Replace nginx.conf"
   template:
     src=templates/nginx.j2
