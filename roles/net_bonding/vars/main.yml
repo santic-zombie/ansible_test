@@ -1,0 +1,8 @@
+b_device: bond0
+b_ip: 192.168.1.5
+b_network: 192.168.1.0
+b_broadcast: 192.168.1.255
+b_gw: 192.168.1.1
+b_prefix: 24
+b_netmask: 255.255.255.0
+b_dns1: 213.108.16.3

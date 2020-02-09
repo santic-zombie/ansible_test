@@ -1,0 +1,26 @@
+- name: "Print interfaces ensXXX interfaces"
+  debug:
+    msg: "{{ ansible_interfaces | select('match', '^(ens)') | list }}"
+
+- name: "Debug show interface"
+  debug:
+    msg: "{{ (item) }}"
+  with_items: "{{ ansible_interfaces }}"
+  when: item.find("ens") != -1
+
+- name: "Deploy ensXXX configs"
+  template:
+    src=templates/rhel_ifcfg.j2
+    dest=/etc/sysconfig/network-scripts/ifcfg-{{ (item) }}
+  with_items: "{{ ansible_interfaces }}"
+  when: item.find("ens") != -1
+
+- name: "Deploy bond config"
+  template:
+    src=templates/rhel_bond.j2
+    dest=/etc/sysconfig/network-scripts/ifcfg-{{ b_device }}
+
+- name: "Restart network"
+  service:
+    name: network
+    state: restarted

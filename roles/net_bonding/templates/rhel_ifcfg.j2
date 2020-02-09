@@ -1,0 +1,8 @@
+DEVICE={{ (item) }}
+ONBOOT=yes
+BOOTPROTO=none
+HWADDR={{ hostvars[inventory_hostname]['ansible_' + (item)]["macaddress"] }}
+NM_CONTROLLED=no
+USERCTL=no
+MASTER=bond0
+SLAVE=yes
