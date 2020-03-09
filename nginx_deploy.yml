@@ -1,6 +1,0 @@
-- name: "Setup NGINX"
-  hosts: test
-  remote_user:
-    santic
-  roles:
-   - nginx_deploy

@@ -1,6 +1,0 @@
-- name: "Setup network"
-  hosts: test
-  remote_user:
-    santic
-  roles:
-   - net_conf
