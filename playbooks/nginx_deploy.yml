@@ -1,0 +1,8 @@
+#playbooks/nginx_deploy.yml
+---
+- name: "Setup NGINX"
+  hosts: test
+  remote_user:
+    santic
+  roles:
+    - { role: ../roles/nginx_deploy }

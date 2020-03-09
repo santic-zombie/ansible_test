@@ -1,0 +1,6 @@
+#playbooks/test_ssh_deploy.yml
+---
+- name: "Test ssh keys deploy"
+  hosts: test
+  roles:
+    - { role: ../roles/ssh_keys }

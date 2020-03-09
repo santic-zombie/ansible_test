@@ -1,0 +1,8 @@
+#playbooks/net_cfg.yml
+---
+- name: "Setup network"
+  hosts: test
+  remote_user:
+    santic
+  roles:
+    - { role: ../roles/net_cfg }

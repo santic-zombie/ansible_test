@@ -1,0 +1,13 @@
+- name: "Ping test host"
+  hosts: test
+  gather_facts: false
+  become:
+    false
+  become_method:
+    su
+  become_user:
+    root
+  remote_user:
+    santic
+  tasks:
+    - ping:
