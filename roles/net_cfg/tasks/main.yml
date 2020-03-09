@@ -1,3 +1,5 @@
+#roles/net_cfg/tasks/main.yml
+---
 - name: "Deploy config"
   template:
     src=templates/rhel_ifcfg.j2

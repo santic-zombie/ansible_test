@@ -1,3 +1,5 @@
+#roles/nginx_deploy/tasks/main.yml
+---
 - name: "Add epel-release repo"
   yum:
      name: epel-release
@@ -5,7 +7,7 @@
 - name: "Install Nginx"
   yum:
      name: nginx
-     state: present 
+     state: present
 
 - name: "Replace nginx.conf"
   template:

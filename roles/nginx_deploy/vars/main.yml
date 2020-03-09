@@ -1,3 +1,5 @@
+#roles/nginx_deploy/vars/main.yml
+---
 listen_http: 80
 nginx_user: nginx
 worker_processes: 1

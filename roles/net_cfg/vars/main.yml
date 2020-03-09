@@ -1,3 +1,5 @@
+#roles/net_cfg/vars/main.yml
+---
 device: ens160
 ip: 10.1.1.5
 gw: 10.1.1.1
